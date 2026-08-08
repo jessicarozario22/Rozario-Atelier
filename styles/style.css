@@ -1051,3 +1051,26 @@ footer {
 
 }
 
+/* Emergency visibility fix */
+.reveal {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.js-reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.js-reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
