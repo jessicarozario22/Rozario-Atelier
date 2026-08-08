@@ -1,1403 +1,677 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Jaci — Designer & Creative Developer</title>
-
-  <meta
-    name="description"
-    content="Jaci is a graphic designer, UI/UX designer and creative developer crafting thoughtful digital experiences."
-  />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap"
-    rel="stylesheet"
-  />
-
-  <style>
-    /* =========================
-       RESET
-    ========================= */
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: "DM Sans", sans-serif;
-      background: #f7f6f2;
-      color: #161616;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      font: inherit;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    /* =========================
-       VARIABLES
-    ========================= */
-
-    :root {
-      --bg: #f7f6f2;
-      --text: #161616;
-      --muted: #6c6c6c;
-      --line: #deddd7;
-      --white: #ffffff;
-      --black: #111111;
-      --accent: #c8ff43;
-      --radius: 24px;
-    }
-
-    /* =========================
-       NAVBAR
-    ========================= */
-
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      padding: 20px 5%;
-      transition: 0.3s ease;
-    }
-
-    header.scrolled {
-      background: rgba(247, 246, 242, 0.88);
-      backdrop-filter: blur(15px);
-      border-bottom: 1px solid var(--line);
-    }
-
-    nav {
-      max-width: 1400px;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-    }
-
-    .logo span {
-      font-family: "Playfair Display", serif;
-      font-style: italic;
-      font-weight: 500;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-      font-size: 14px;
-    }
-
-    .nav-links a {
-      position: relative;
-    }
-
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 1px;
-      bottom: -5px;
-      left: 0;
-      background: var(--text);
-      transition: 0.3s;
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    .nav-contact {
-      background: var(--black);
-      color: white;
-      padding: 11px 19px;
-      border-radius: 100px;
-      font-size: 13px;
-      transition: 0.3s;
-    }
-
-    .nav-contact:hover {
-      transform: translateY(-2px);
-    }
-
-    .menu-btn {
-      display: none;
-      border: 0;
-      background: none;
-      cursor: pointer;
-      font-size: 24px;
-    }
-
-    /* =========================
-       HERO
-    ========================= */
-
-    .hero {
-      min-height: 100vh;
-      padding: 150px 5% 70px;
-      display: flex;
-      align-items: center;
-    }
-
-    .hero-inner {
-      max-width: 1400px;
-      width: 100%;
-      margin: auto;
-    }
-
-    .eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 30px;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-    }
-
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      background: #7fba00;
-      border-radius: 50%;
-      box-shadow: 0 0 0 5px rgba(127, 186, 0, 0.12);
-    }
-
-    .hero h1 {
-      max-width: 1050px;
-      font-size: clamp(55px, 8.5vw, 132px);
-      line-height: 0.91;
-      letter-spacing: -6px;
-      font-weight: 600;
-    }
-
-    .hero h1 em {
-      font-family: "Playfair Display", serif;
-      font-weight: 500;
-    }
-
-    .hero-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-top: 70px;
-      gap: 40px;
-    }
-
-    .hero-description {
-      max-width: 460px;
-      color: var(--muted);
-      font-size: 17px;
-    }
-
-    .hero-description strong {
-      color: var(--text);
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 12px;
-    }
-
-    .btn {
-      padding: 14px 22px;
-      border-radius: 100px;
-      border: 1px solid var(--text);
-      font-size: 14px;
-      transition: 0.3s;
-    }
-
-    .btn.primary {
-      background: var(--black);
-      color: white;
-    }
-
-    .btn:hover {
-      transform: translateY(-3px);
-    }
-
-    .btn.secondary:hover {
-      background: var(--black);
-      color: white;
-    }
-
-    /* =========================
-       MARQUEE
-    ========================= */
-
-    .marquee {
-      overflow: hidden;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      padding: 20px 0;
-      white-space: nowrap;
-    }
-
-    .marquee-track {
-      display: inline-flex;
-      gap: 35px;
-      animation: marquee 22s linear infinite;
-    }
-
-    .marquee span {
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: var(--muted);
-    }
-
-    .marquee .star {
-      color: var(--text);
-      font-size: 20px;
-    }
-
-    @keyframes marquee {
-      from {
-        transform: translateX(0);
-      }
-
-      to {
-        transform: translateX(-50%);
-      }
-    }
-
-    /* =========================
-       SECTION
-    ========================= */
-
-    section {
-      padding: 130px 5%;
-    }
-
-    .section-inner {
-      max-width: 1400px;
-      margin: auto;
-    }
-
-    .section-label {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: var(--muted);
-      margin-bottom: 45px;
-    }
-
-    .section-heading {
-      font-size: clamp(40px, 6vw, 82px);
-      line-height: 0.98;
-      letter-spacing: -3px;
-      max-width: 900px;
-      margin-bottom: 70px;
-    }
-
-    .section-heading em {
-      font-family: "Playfair Display", serif;
-      font-weight: 500;
-    }
-
-    /* =========================
-       WORK
-    ========================= */
-
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 70px 25px;
-    }
-
-    .project {
-      cursor: pointer;
-    }
-
-    .project:nth-child(even) {
-      margin-top: 100px;
-    }
-
-    .project-image {
-      height: 550px;
-      border-radius: var(--radius);
-      overflow: hidden;
-      background: #e5e3dc;
-      position: relative;
-    }
-
-    .project-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: 0.6s ease;
-    }
-
-    .project:hover .project-image img {
-      transform: scale(1.04);
-    }
-
-    .project-overlay {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      background: rgba(0,0,0,0.12);
-      transition: 0.4s;
-    }
-
-    .project:hover .project-overlay {
-      opacity: 1;
-    }
-
-    .view-project {
-      background: white;
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      font-size: 13px;
-    }
-
-    .project-info {
-      padding-top: 20px;
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .project-info h3 {
-      font-size: 22px;
-      font-weight: 500;
-    }
-
-    .project-info p {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .project-number {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    /* =========================
-       ABOUT
-    ========================= */
-
-    .about {
-      background: var(--black);
-      color: white;
-    }
-
-    .about .section-label {
-      color: #8e8e8e;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 100px;
-    }
-
-    .about-text {
-      font-size: clamp(25px, 3vw, 44px);
-      line-height: 1.15;
-      letter-spacing: -1.5px;
-    }
-
-    .about-text em {
-      font-family: "Playfair Display", serif;
-      font-weight: 400;
-    }
-
-    .about-details {
-      align-self: end;
-      color: #a7a7a7;
-      max-width: 430px;
-    }
-
-    .about-details p {
-      margin-bottom: 30px;
-    }
-
-    /* =========================
-       SKILLS
-    ========================= */
-
-    .skills {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border-top: 1px solid var(--line);
-    }
-
-    .skill {
-      padding: 30px 20px 30px 0;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .skill:not(:last-child) {
-      border-right: 1px solid var(--line);
-      padding-right: 30px;
-    }
-
-    .skill-number {
-      color: var(--muted);
-      font-size: 12px;
-      margin-bottom: 45px;
-    }
-
-    .skill h3 {
-      font-size: 21px;
-      margin-bottom: 15px;
-      font-weight: 500;
-    }
-
-    .skill p {
-      font-size: 14px;
-      color: var(--muted);
-    }
-
-    /* =========================
-       PROCESS
-    ========================= */
-
-    .process-list {
-      border-top: 1px solid var(--line);
-    }
-
-    .process-item {
-      display: grid;
-      grid-template-columns: 80px 1fr 1fr;
-      gap: 30px;
-      padding: 30px 0;
-      border-bottom: 1px solid var(--line);
-      align-items: start;
-    }
-
-    .process-number {
-      color: var(--muted);
-    }
-
-    .process-item h3 {
-      font-size: 30px;
-      font-weight: 500;
-    }
-
-    .process-item p {
-      color: var(--muted);
-      font-size: 14px;
-      max-width: 450px;
-    }
-
-    /* =========================
-       CONTACT
-    ========================= */
-
-    .contact {
-      background: var(--accent);
-    }
-
-    .contact-heading {
-      font-size: clamp(55px, 9vw, 130px);
-      line-height: 0.9;
-      letter-spacing: -6px;
-      max-width: 1100px;
-    }
-
-    .contact-heading em {
-      font-family: "Playfair Display", serif;
-      font-weight: 500;
-    }
-
-    .contact-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-top: 100px;
-    }
-
-    .email {
-      font-size: clamp(20px, 3vw, 35px);
-      border-bottom: 1px solid var(--text);
-      padding-bottom: 5px;
-    }
-
-    .socials {
-      display: flex;
-      gap: 20px;
-    }
-
-    .socials a {
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    /* =========================
-       FOOTER
-    ========================= */
-
-    footer {
-      background: var(--accent);
-      padding: 30px 5%;
-      border-top: 1px solid rgba(0,0,0,0.15);
-    }
-
-    .footer-inner {
-      max-width: 1400px;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      color: #343434;
-      font-size: 12px;
-    }
-
-    /* =========================
-       REVEAL ANIMATION
-    ========================= */
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(35px);
-      transition: 0.8s ease;
-    }
-
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* =========================
-       RESPONSIVE
-    ========================= */
-
-    @media (max-width: 900px) {
-
-      .nav-links,
-      .nav-contact {
-        display: none;
-      }
-
-      .menu-btn {
-        display: block;
-      }
-
-      .hero h1 {
-        letter-spacing: -3px;
-      }
-
-      .hero-bottom {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .projects {
-        grid-template-columns: 1fr;
-      }
-
-      .project:nth-child(even) {
-        margin-top: 0;
-      }
-
-      .project-image {
-        height: 450px;
-      }
-
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 60px;
-      }
-
-      .skills {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .skill:nth-child(2) {
-        border-right: none;
-      }
-
-      .process-item {
-        grid-template-columns: 50px 1fr;
-      }
-
-      .process-item p {
-        grid-column: 2;
-      }
-
-      .contact-bottom {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 50px;
-      }
-    }
-
-    @media (max-width: 600px) {
-
-      section {
-        padding: 90px 6%;
-      }
-
-      header {
-        padding: 18px 6%;
-      }
-
-      .hero {
-        padding: 130px 6% 60px;
-      }
-
-      .hero h1 {
-        font-size: 55px;
-        letter-spacing: -3px;
-      }
-
-      .hero-bottom {
-        margin-top: 50px;
-      }
-
-      .hero-actions {
-        flex-wrap: wrap;
-      }
-
-      .projects {
-        gap: 50px;
-      }
-
-      .project-image {
-        height: 350px;
-      }
-
-      .skills {
-        grid-template-columns: 1fr;
-      }
-
-      .skill:not(:last-child) {
-        border-right: 0;
-      }
-
-      .process-item {
-        grid-template-columns: 35px 1fr;
-      }
-
-      .process-item h3 {
-        font-size: 24px;
-      }
-
-      .contact-heading {
-        letter-spacing: -3px;
-      }
-
-      .footer-inner {
-        flex-direction: column;
-        gap: 10px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Jaci — Designer & Creative Developer</title>
+
+    <meta
+        name="description"
+        content="Jaci is a graphic designer, UI/UX designer, product designer and creative developer."
+    >
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-  <!-- =========================
-       NAVIGATION
-  ========================= -->
+<!-- =========================
+     HEADER
+========================= -->
 
-  <header id="header">
+<header class="header" id="header">
 
-    <nav>
+    <nav class="navbar container">
 
-      <a href="#home" class="logo">
-        Rozario <span>Atelier</span>
-      </a>
+        <a href="#home" class="logo">
+            Rozario <span>Atelier</span>
+        </a>
 
-      <ul class="nav-links">
-        <li><a href="#work">Work</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Expertise</a></li>
-        <li><a href="#process">Process</a></li>
-      </ul>
+        <ul class="nav-links" id="navLinks">
+            <li>
+                <a href="#work">Work</a>
+            </li>
 
-      <a href="#contact" class="nav-contact">
-        Let's talk ↗
-      </a>
+            <li>
+                <a href="#about">About</a>
+            </li>
 
-      <button class="menu-btn" id="menuBtn">
-        ☰
-      </button>
+            <li>
+                <a href="#services">Expertise</a>
+            </li>
+
+            <li>
+                <a href="#process">Process</a>
+            </li>
+
+            <li class="mobile-contact">
+                <a href="#contact">Contact</a>
+            </li>
+        </ul>
+
+        <a href="#contact" class="nav-contact">
+            Let's talk ↗
+        </a>
+
+        <button
+            class="menu-btn"
+            id="menuBtn"
+            aria-label="Open menu"
+        >
+            <span></span>
+            <span></span>
+        </button>
 
     </nav>
 
-  </header>
+</header>
 
 
-  <!-- =========================
-       HERO
-  ========================= -->
+<!-- =========================
+     MAIN
+========================= -->
 
-  <main>
+<main>
 
-    <section class="hero" id="home">
+<!-- HERO -->
 
-      <div class="hero-inner">
+<section class="hero" id="home">
 
-        <div class="eyebrow">
-          <span class="status-dot"></span>
-          Available for selected projects
+    <div class="hero-inner container">
+
+        <div class="eyebrow reveal">
+            <span class="status-dot"></span>
+            Available for selected projects
         </div>
 
-        <h1 class="reveal">
-          Designing
-          <em>ideas</em>
-          into digital
-          experiences.
+        <h1 class="hero-title reveal">
+            Designing
+            <em>ideas</em>
+            into digital
+            experiences.
         </h1>
 
         <div class="hero-bottom reveal">
 
-          <p class="hero-description">
-            I'm <strong>Jaci</strong> — a graphic designer,
-            UI/UX designer and creative developer focused on
-            creating meaningful visual identities and digital
-            products.
-          </p>
+            <p class="hero-description">
+                I'm <strong>Jaci</strong> — a graphic designer,
+                UI/UX designer and creative developer focused on
+                creating meaningful visual identities and digital
+                products.
+            </p>
 
-          <div class="hero-actions">
+            <div class="hero-actions">
 
-            <a href="#work" class="btn primary">
-              Explore my work ↓
-            </a>
+                <a href="#work" class="btn btn-primary">
+                    Explore my work ↓
+                </a>
 
-            <a href="#contact" class="btn secondary">
-              Get in touch ↗
-            </a>
+                <a href="#contact" class="btn btn-secondary">
+                    Get in touch ↗
+                </a>
 
-          </div>
+            </div>
 
         </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         MARQUEE
-    ========================= -->
-
-    <div class="marquee">
-
-      <div class="marquee-track">
-
-        <span>Graphic Design</span>
-        <span class="star">✦</span>
-
-        <span>UI/UX Design</span>
-        <span class="star">✦</span>
-
-        <span>Product Design</span>
-        <span class="star">✦</span>
-
-        <span>Web Development</span>
-        <span class="star">✦</span>
-
-        <span>Brand Identity</span>
-        <span class="star">✦</span>
-
-        <span>Graphic Design</span>
-        <span class="star">✦</span>
-
-        <span>UI/UX Design</span>
-        <span class="star">✦</span>
-
-        <span>Product Design</span>
-        <span class="star">✦</span>
-
-        <span>Web Development</span>
-        <span class="star">✦</span>
-
-      </div>
 
     </div>
 
+</section>
 
-    <!-- =========================
-         SELECTED WORK
-    ========================= -->
 
-    <section id="work">
+<!-- MARQUEE -->
 
-      <div class="section-inner">
+<div class="marquee">
+
+    <div class="marquee-track">
+
+        <span>Graphic Design</span>
+        <b>✦</b>
+
+        <span>UI/UX Design</span>
+        <b>✦</b>
+
+        <span>Product Design</span>
+        <b>✦</b>
+
+        <span>Web Development</span>
+        <b>✦</b>
+
+        <span>Brand Identity</span>
+        <b>✦</b>
+
+        <span>Graphic Design</span>
+        <b>✦</b>
+
+        <span>UI/UX Design</span>
+        <b>✦</b>
+
+        <span>Product Design</span>
+        <b>✦</b>
+
+        <span>Web Development</span>
+        <b>✦</b>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     WORK
+========================= -->
+
+<section class="section work" id="work">
+
+    <div class="container">
 
         <div class="section-label">
-          01 — Selected work
+            01 — Selected work
         </div>
 
         <h2 class="section-heading reveal">
-          A selection of
-          <em>things I've made.</em>
+            A selection of
+            <em>things I've made.</em>
         </h2>
 
 
         <div class="projects">
 
-          <!-- PROJECT 01 -->
 
-          <article class="project reveal">
+            <!-- RYDO -->
 
-            <div class="project-image">
+            <article class="project reveal">
 
-              <img
-                src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=1200&q=85"
-                alt="Brand identity project"
-              />
+                <a href="#" class="project-link">
 
-              <div class="project-overlay">
-                <div class="view-project">
-                  View ↗
-                </div>
-              </div>
+                    <div class="project-image">
 
-            </div>
+                        <img
+                            src="assets/images/rydo.jpg"
+                            alt="RYDO ride sharing UX project"
+                            loading="lazy"
+                        >
 
-            <div class="project-info">
+                        <div class="project-overlay">
+                            <span>View Case Study ↗</span>
+                        </div>
 
-              <div>
-                <h3>SAVORA</h3>
-                <p>Brand Identity · UI/UX · Product Design</p>
-              </div>
+                    </div>
 
-              <span class="project-number">
-                01
-              </span>
+                    <div class="project-info">
 
-            </div>
+                        <div>
+                            <h3>RYDO</h3>
 
-          </article>
+                            <p>
+                                UX Research · Product Design · Mobile App
+                            </p>
+                        </div>
 
+                        <span class="project-number">
+                            01
+                        </span>
 
-          <!-- PROJECT 02 -->
+                    </div>
 
-          <article class="project reveal">
+                </a>
 
-            <div class="project-image">
-
-              <img
-                src="https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&fit=crop&w=1200&q=85"
-                alt="Mobile app UI UX project"
-              />
-
-              <div class="project-overlay">
-                <div class="view-project">
-                  View ↗
-                </div>
-              </div>
-
-            </div>
-
-            <div class="project-info">
-
-              <div>
-                <h3>RYDO</h3>
-                <p>UX Research · Product Design · Mobile App</p>
-              </div>
-
-              <span class="project-number">
-                02
-              </span>
-
-            </div>
-
-          </article>
+            </article>
 
 
-          <!-- PROJECT 03 -->
+            <!-- SAVORA -->
 
-          <article class="project reveal">
+            <article class="project reveal">
 
-            <div class="project-image">
+                <a href="#" class="project-link">
 
-              <img
-                src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1200&q=85"
-                alt="Graphic design project"
-              />
+                    <div class="project-image">
 
-              <div class="project-overlay">
-                <div class="view-project">
-                  View ↗
-                </div>
-              </div>
+                        <img
+                            src="assets/images/savora.jpg"
+                            alt="SAVORA food delivery project"
+                            loading="lazy"
+                        >
 
-            </div>
+                        <div class="project-overlay">
+                            <span>View Project ↗</span>
+                        </div>
 
-            <div class="project-info">
+                    </div>
 
-              <div>
-                <h3>Visual Identity</h3>
-                <p>Graphic Design · Art Direction · Branding</p>
-              </div>
+                    <div class="project-info">
 
-              <span class="project-number">
-                03
-              </span>
+                        <div>
+                            <h3>SAVORA</h3>
 
-            </div>
+                            <p>
+                                Brand Identity · UI/UX · Product Design
+                            </p>
+                        </div>
 
-          </article>
+                        <span class="project-number">
+                            02
+                        </span>
+
+                    </div>
+
+                </a>
+
+            </article>
 
 
-          <!-- PROJECT 04 -->
+            <!-- BRANDING -->
 
-          <article class="project reveal">
+            <article class="project reveal">
 
-            <div class="project-image">
+                <a href="#" class="project-link">
 
-              <img
-                src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=1200&q=85"
-                alt="Creative art project"
-              />
+                    <div class="project-image">
 
-              <div class="project-overlay">
-                <div class="view-project">
-                  View ↗
-                </div>
-              </div>
+                        <img
+                            src="assets/images/branding.jpg"
+                            alt="Brand identity design"
+                            loading="lazy"
+                        >
 
-            </div>
+                        <div class="project-overlay">
+                            <span>View Project ↗</span>
+                        </div>
 
-            <div class="project-info">
+                    </div>
 
-              <div>
-                <h3>Creative Works</h3>
-                <p>Illustration · Art · Creative Direction</p>
-              </div>
+                    <div class="project-info">
 
-              <span class="project-number">
-                04
-              </span>
+                        <div>
+                            <h3>Brand Identity</h3>
 
-            </div>
+                            <p>
+                                Graphic Design · Art Direction · Branding
+                            </p>
+                        </div>
 
-          </article>
+                        <span class="project-number">
+                            03
+                        </span>
+
+                    </div>
+
+                </a>
+
+            </article>
+
+
+            <!-- CREATIVE -->
+
+            <article class="project reveal">
+
+                <a href="#" class="project-link">
+
+                    <div class="project-image">
+
+                        <img
+                            src="assets/images/creative.jpg"
+                            alt="Creative artwork"
+                            loading="lazy"
+                        >
+
+                        <div class="project-overlay">
+                            <span>View Project ↗</span>
+                        </div>
+
+                    </div>
+
+                    <div class="project-info">
+
+                        <div>
+                            <h3>Creative Works</h3>
+
+                            <p>
+                                Illustration · Art · Creative Direction
+                            </p>
+                        </div>
+
+                        <span class="project-number">
+                            04
+                        </span>
+
+                    </div>
+
+                </a>
+
+            </article>
 
         </div>
 
-      </div>
+    </div>
 
-    </section>
+</section>
 
 
-    <!-- =========================
-         ABOUT
-    ========================= -->
+<!-- =========================
+     ABOUT
+========================= -->
 
-    <section class="about" id="about">
+<section class="section about" id="about">
 
-      <div class="section-inner">
+    <div class="container">
 
         <div class="section-label">
-          02 — About me
+            02 — About me
         </div>
 
         <div class="about-grid">
 
-          <div class="about-text reveal">
+            <div class="about-text reveal">
 
-            I don't just make things
-            <em>look good.</em>
+                I don't just make things
+                <em>look good.</em>
 
-            I think about why they
-            exist, who they're for,
-            and how they should
-            <em>feel.</em>
+                I think about why they
+                exist, who they're for,
+                and how they should
+                <em>feel.</em>
 
-          </div>
+            </div>
 
-          <div class="about-details reveal">
 
-            <p>
-              I'm Jaci, a multidisciplinary designer from
-              Bangladesh with a background in graphic design,
-              UI/UX and product design.
-            </p>
+            <div class="about-details reveal">
 
-            <p>
-              Currently, I'm expanding my skills into web
-              development and exploring how design and code
-              can work together to create better digital
-              experiences.
-            </p>
+                <p>
+                    I'm Jaci, a multidisciplinary designer
+                    with a background in graphic design,
+                    UI/UX and product design.
+                </p>
 
-            <p>
-              My approach combines visual thinking,
-              user research, storytelling and technology.
-            </p>
+                <p>
+                    I'm currently expanding my skills into
+                    web development and exploring how design
+                    and code can work together to create
+                    better digital experiences.
+                </p>
 
-          </div>
+                <p>
+                    My approach combines visual thinking,
+                    user research, storytelling and technology.
+                </p>
+
+            </div>
 
         </div>
 
-      </div>
+    </div>
 
-    </section>
+</section>
 
 
-    <!-- =========================
-         EXPERTISE
-    ========================= -->
+<!-- =========================
+     EXPERTISE
+========================= -->
 
-    <section id="services">
+<section class="section services" id="services">
 
-      <div class="section-inner">
+    <div class="container">
 
         <div class="section-label">
-          03 — Expertise
+            03 — Expertise
         </div>
 
         <h2 class="section-heading reveal">
-          What I can bring
-          <em>to the table.</em>
+            What I can bring
+            <em>to the table.</em>
         </h2>
 
 
         <div class="skills">
 
-          <div class="skill reveal">
 
-            <div class="skill-number">01</div>
+            <div class="skill reveal">
 
-            <h3>Graphic Design</h3>
+                <span class="skill-number">01</span>
 
-            <p>
-              Visual identities, social media design,
-              print design, campaigns and creative
-              communication.
-            </p>
+                <h3>Graphic Design</h3>
 
-          </div>
+                <p>
+                    Visual identities, social media design,
+                    print design, campaigns and creative
+                    communication.
+                </p>
 
-
-          <div class="skill reveal">
-
-            <div class="skill-number">02</div>
-
-            <h3>UI/UX Design</h3>
-
-            <p>
-              User research, wireframes, information
-              architecture, prototypes and polished
-              interfaces.
-            </p>
-
-          </div>
+            </div>
 
 
-          <div class="skill reveal">
+            <div class="skill reveal">
 
-            <div class="skill-number">03</div>
+                <span class="skill-number">02</span>
 
-            <h3>Product Design</h3>
+                <h3>UI/UX Design</h3>
 
-            <p>
-              Turning problems into useful digital
-              products through research, strategy
-              and thoughtful design.
-            </p>
+                <p>
+                    User research, wireframes, information
+                    architecture, prototypes and polished
+                    interfaces.
+                </p>
 
-          </div>
+            </div>
 
 
-          <div class="skill reveal">
+            <div class="skill reveal">
 
-            <div class="skill-number">04</div>
+                <span class="skill-number">03</span>
 
-            <h3>Web Development</h3>
+                <h3>Product Design</h3>
 
-            <p>
-              Building responsive websites and exploring
-              modern full-stack development with design
-              at the center.
-            </p>
+                <p>
+                    Turning problems into useful digital
+                    products through research, strategy
+                    and thoughtful design.
+                </p>
 
-          </div>
+            </div>
+
+
+            <div class="skill reveal">
+
+                <span class="skill-number">04</span>
+
+                <h3>Web Development</h3>
+
+                <p>
+                    Building responsive websites and exploring
+                    modern full-stack development with design
+                    at the center.
+                </p>
+
+            </div>
 
         </div>
 
-      </div>
+    </div>
 
-    </section>
+</section>
 
 
-    <!-- =========================
-         PROCESS
-    ========================= -->
+<!-- =========================
+     PROCESS
+========================= -->
 
-    <section id="process">
+<section class="section process" id="process">
 
-      <div class="section-inner">
+    <div class="container">
 
         <div class="section-label">
-          04 — Process
+            04 — Process
         </div>
 
         <h2 class="section-heading reveal">
-          From <em>problem</em>
-          to possibility.
+            From <em>problem</em>
+            to possibility.
         </h2>
 
 
         <div class="process-list">
 
-          <div class="process-item reveal">
 
-            <span class="process-number">01</span>
+            <div class="process-item reveal">
 
-            <h3>Discover</h3>
+                <span class="process-number">01</span>
 
-            <p>
-              I start by understanding the problem,
-              audience, context and goals before
-              jumping into visual design.
-            </p>
+                <h3>Discover</h3>
 
-          </div>
+                <p>
+                    I start by understanding the problem,
+                    audience, context and goals before
+                    jumping into visual design.
+                </p>
 
-
-          <div class="process-item reveal">
-
-            <span class="process-number">02</span>
-
-            <h3>Define</h3>
-
-            <p>
-              Research findings become clear user
-              needs, problem statements, opportunities
-              and product direction.
-            </p>
-
-          </div>
+            </div>
 
 
-          <div class="process-item reveal">
+            <div class="process-item reveal">
 
-            <span class="process-number">03</span>
+                <span class="process-number">02</span>
 
-            <h3>Design</h3>
+                <h3>Define</h3>
 
-            <p>
-              I explore ideas through wireframes,
-              visual systems, prototypes and
-              high-fidelity interfaces.
-            </p>
+                <p>
+                    Research findings become clear user
+                    needs, problem statements, opportunities
+                    and product direction.
+                </p>
 
-          </div>
+            </div>
 
 
-          <div class="process-item reveal">
+            <div class="process-item reveal">
 
-            <span class="process-number">04</span>
+                <span class="process-number">03</span>
 
-            <h3>Build</h3>
+                <h3>Design</h3>
 
-            <p>
-              I bring the final idea to life through
-              responsive web experiences and
-              developer-friendly design systems.
-            </p>
+                <p>
+                    I explore ideas through wireframes,
+                    visual systems, prototypes and
+                    high-fidelity interfaces.
+                </p>
 
-          </div>
+            </div>
+
+
+            <div class="process-item reveal">
+
+                <span class="process-number">04</span>
+
+                <h3>Build</h3>
+
+                <p>
+                    I bring the final idea to life through
+                    responsive web experiences and
+                    developer-friendly design systems.
+                </p>
+
+            </div>
 
         </div>
 
-      </div>
+    </div>
 
-    </section>
+</section>
 
 
-    <!-- =========================
-         CONTACT
-    ========================= -->
+<!-- =========================
+     CONTACT
+========================= -->
 
-    <section class="contact" id="contact">
+<section class="contact" id="contact">
 
-      <div class="section-inner">
+    <div class="container">
 
         <div class="section-label">
-          05 — Contact
+            05 — Contact
         </div>
 
         <h2 class="contact-heading reveal">
-          Have an idea?
-          <em>Let's make it real.</em>
+            Have an idea?
+            <em>Let's make it real.</em>
         </h2>
 
 
         <div class="contact-bottom">
 
-          <a
-            href="mailto:your@email.com"
-            class="email"
-          >
-            your@email.com ↗
-          </a>
-
-
-          <div class="socials">
-
-            <a href="#" target="_blank">
-              Behance
+            <a
+                href="mailto:YOUR-EMAIL@example.com"
+                class="email"
+            >
+                YOUR-EMAIL@example.com ↗
             </a>
 
-            <a href="#" target="_blank">
-              LinkedIn
-            </a>
 
-            <a href="#" target="_blank">
-              Instagram
-            </a>
+            <div class="socials">
 
-            <a href="#" target="_blank">
-              GitHub
-            </a>
+                <a href="#" target="_blank">
+                    Behance
+                </a>
 
-          </div>
+                <a href="#" target="_blank">
+                    LinkedIn
+                </a>
+
+                <a href="#" target="_blank">
+                    Instagram
+                </a>
+
+                <a href="#" target="_blank">
+                    GitHub
+                </a>
+
+            </div>
 
         </div>
 
-      </div>
+    </div>
 
-    </section>
+</section>
 
-  </main>
+</main>
 
 
-  <!-- =========================
-       FOOTER
-  ========================= -->
+<!-- =========================
+     FOOTER
+========================= -->
 
-  <footer>
+<footer>
 
-    <div class="footer-inner">
+    <div class="container footer-inner">
 
-      <span>
-        © 2026 Jaci / Rozario Atelier
-      </span>
+        <span>
+            © 2026 Jaci / Rozario Atelier
+        </span>
 
-      <span>
-        Designed & built with intention.
-      </span>
+        <span>
+            Designed & built with intention.
+        </span>
 
     </div>
 
-  </footer>
+</footer>
 
 
-  <!-- =========================
-       JAVASCRIPT
-  ========================= -->
+<!-- JAVASCRIPT -->
 
-  <script>
-
-    /* =========================
-       NAVBAR SCROLL
-    ========================= */
-
-    const header = document.getElementById("header");
-
-    window.addEventListener("scroll", () => {
-
-      if (window.scrollY > 40) {
-        header.classList.add("scrolled");
-      } else {
-        header.classList.remove("scrolled");
-      }
-
-    });
-
-
-    /* =========================
-       SCROLL REVEAL
-    ========================= */
-
-    const revealElements =
-      document.querySelectorAll(".reveal");
-
-    const revealObserver =
-      new IntersectionObserver(
-        (entries) => {
-
-          entries.forEach((entry) => {
-
-            if (entry.isIntersecting) {
-
-              entry.target.classList.add("active");
-
-              revealObserver.unobserve(entry.target);
-
-            }
-
-          });
-
-        },
-        {
-          threshold: 0.12
-        }
-      );
-
-
-    revealElements.forEach((element) => {
-
-      revealObserver.observe(element);
-
-    });
-
-
-    /* =========================
-       MOBILE MENU
-    ========================= */
-
-    const menuBtn =
-      document.getElementById("menuBtn");
-
-    const navLinks =
-      document.querySelector(".nav-links");
-
-
-    menuBtn.addEventListener("click", () => {
-
-      navLinks.classList.toggle("mobile-open");
-
-    });
-
-
-  </script>
+<script src="js/script.js"></script>
 
 </body>
 </html>
+```
